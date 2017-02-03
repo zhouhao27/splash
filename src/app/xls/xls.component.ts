@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from './video';
 import { LocalDataSource } from 'ng2-smart-table';
-
-declare var SimpleExcel;
+// import * as alasql from 'alasql';
 
 @Component({
   selector: 'app-xls',
@@ -132,67 +131,23 @@ export class XlsComponent implements OnInit {
     this.yahooData.getAll().then(
       (data) => {
         if (data.length > 0) {
-          // console.log(JSON.stringify(data))
-          this.downloadCSV({filename:'yahoo.csv',data:data});
+          console.log(JSON.stringify(data))
+          // this.downloadCSV({filename:'yahoo.csv',data:data});
 
-          // Doesn't work well
-          // var blob = new Blob([document.getElementById('yahooTable').innerHTML], {
-          //   type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-          // });
-          // FileSaver.saveAs(blob, "yahoo.xls");
-
-          // method 3
-          // var xlsxWriter = new SimpleExcel.Writer.XLSX();
-          // var xlsxSheet = new SimpleExcel.Sheet();
-          // var Cell = SimpleExcel.Cell;
-          // xlsxSheet.setRecord([
-          //     [new Cell('ID', 'TEXT'), new Cell('Nama', 'TEXT'), new Cell('Kode Wilayah', 'TEXT')],
-          //     [new Cell(1, 'NUMBER'), new Cell('Kab. Bogor', 'TEXT'), new Cell(1, 'NUMBER')],
-          //     [new Cell(2, 'NUMBER'), new Cell('Kab. Cianjur', 'TEXT'), new Cell(1, 'NUMBER')],
-          //     [new Cell(3, 'NUMBER'), new Cell('Kab. Sukabumi', 'TEXT'), new Cell(1, 'NUMBER')],
-          //     [new Cell(4, 'NUMBER'), new Cell('Kab. Tasikmalaya', 'TEXT'), new Cell(2, 'NUMBER')]
-          // ]);
-          // xlsxWriter.insertSheet(xlsxSheet);
-          // xlsxWriter.saveFile();
+          // save to excel
+          this.exportToExcel('yahoo', data)
         }
       }
     )
-
-    // FileSaver.js
-    // let str = '[{"title":"News","description":"Great News 001","category":"Entertainment","secondCategory":"","tag":""}]';
-    // let d = JSON.parse(str);
-    // let str = [
-    //     {"1":"one"},{"2":"two"}
-    // ]
-    // var d = JSON.stringify(str);
-    // let blob = new Blob([d], {
-    //   //type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-16le"
-    //   // type: "application/vnd.ms-excel;charset=charset=utf-8"
-    //   type: "text/csv;charset=utf-8"
-    // });
-    // FileSaver.saveAs(blob, "test.csv");
-
-    //
-    // let opts = { bookType:'xlsx', bookSST:false, type:'binary' };
-    // let wbout = XLSX.write(d,opts);
-    // FileSaver.saveAs(new Blob([this.s2ab(wbout)],{type:""}), "test.xlsx")
-
-    // this.yahooData.getAll().then(
-    //   (data) => {
-    //     if (data.length > 0) {
-
-    //       console.log(JSON.stringify(data))
-    //       // write(JSON.stringify(data),'out.xls')
-    //     }
-    //   }
-    // )
   }
 
-  private s2ab(s) {
-    var buf = new ArrayBuffer(s.length);
-    var view = new Uint8Array(buf);
-    for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
-    return buf;
+  private exportToExcel(fileName, targetData) {
+    if (targetData.constructor != Array) {
+        console.error('Can not export error type data to excel.');
+        return;
+    }
+    alasql('SELECT * INTO XLSX("' + fileName + '.xlsx",{headers:true}) FROM ?', [targetData]);
+    // alasql('SELECT * INTO CSV("' + fileName + '.csv",{headers:true}) FROM ?', [targetData]);
   }
 
   private convertArrayOfObjectsToCSV(args) : string {

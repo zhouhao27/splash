@@ -10,6 +10,19 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 
 > npm install --save ng2-smart-table
 
+- [alasql](https://github.com/agershun/alasql)
+
+> npm install alasql --save
+
+Add the following line in angular-cli.json:
+```
+"scripts": ["../node_modules/alasql/dist/alasql.min.js","../node_modules/xlsx/dist/xlsx.core.min.js"]
+```
+
+In app.module.ts:
+
+`import * as alasql from 'alasql';`
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
