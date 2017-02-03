@@ -1,0 +1,13 @@
+<h1>Splash</h1>
+<h3>Information from http://splash-video.com</h3>
+<hr>
+<textarea style="width:100%;" ref-textarea [(ngModel)]="textValue" rows="10"></textarea><br/>
+<button (click)="update(textarea.value)">Add</button>
+<button (click)="textValue=''">Clear</button>
+
+<h2>For Yahoo <button (click)="log=''">Clear</button> <button (click)="export()">Export</button></h2>
+<pre>{{log}}</pre>
+<ng2-smart-table [settings]="settings" [source]="yahooData"></ng2-smart-table>
+
+<h2>For CMS <button (click)="log=''">Clear</button> <button (click)="log=''">Export</button></h2>
+<pre>{{log}}</pre>
