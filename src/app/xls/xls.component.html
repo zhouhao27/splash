@@ -9,5 +9,6 @@
 <pre>{{log}}</pre>
 <ng2-smart-table [settings]="settings" [source]="yahooData"></ng2-smart-table>
 
-<h2>For CMS <button (click)="log=''">Clear</button> <button (click)="log=''">Export</button></h2>
+<h2>For CMS <button (click)="log=''">Clear</button> <button (click)="exportCMS()">Export</button></h2>
 <pre>{{log}}</pre>
+<ng2-smart-table [settings]="cmsSettings" [source]="cmsData"></ng2-smart-table>
