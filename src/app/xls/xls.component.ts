@@ -237,13 +237,11 @@ export class XlsComponent implements OnInit {
     let video = this.createVideo(value);
     // append video to videos
     let str = video.toYahoo()
-
     this.yahooData.add(JSON.parse(str));
     this.yahooData.reset();
 
     let str2 = video.toCMS()
-    // console.log(str2);
-    // console.log(JSON.parse(str2))
+    console.log(str2);
     this.cmsData.add(JSON.parse(str2));
     this.cmsData.reset();
 
@@ -259,17 +257,18 @@ export class XlsComponent implements OnInit {
       const key = array[0];
       const val = array[1];
 
+      // TODO: remove "" inside description or title
       // title from headline
       if (key === 'Headline') {
         // remove SNTV -
         const data = val.split('SNTV - ')
-        video.title = data[1];
+        video.title = data[1].split('"').join("'");
       }
 
       // description from caption
       if (key === 'Caption') {
         const data = val.split(' Ref: ');
-        video.description = data[0];
+        video.description = data[0].split('"').join("'");
       }
 
       // duration from Length of clip (mm:ss)
@@ -287,7 +286,7 @@ export class XlsComponent implements OnInit {
         if (m < 0) {
           m = 0;
         }
-        video.duration = '00:' + this.leftPad(m,2) + ':' + this.leftPad(s,2);
+        video.duration = '00:' + this.leftPad(m,2) + ':' + this.leftPad(s,2) + ".000";
       }
 
       // from keywords to tag

@@ -99,7 +99,7 @@ export class Video {
       + '"' + Video.CMS_SAMSUNG_RUNTIME + '":"' + this.duration + '",'
       + '"' + Video.CMS_VIDEO_RATE + '":"' + rate + '",'
       + '"' + Video.CMS_RIGHT_DETAILS + '":"' + 'Online,Mobile Browser,Andoird,iOS,Connected TV,Nokia' + '",'
-      + '"' + Video.CMS_VIDEO_TAG + '":"' + '' + '",'
+      + '"' + Video.CMS_VIDEO_TAG + '":"' + 'Entertainment' + '",'
       + '"' + Video.CMS_SHORT_DESC + '":"' + this.description + '",'
       + '"' + Video.CMS_DESC + '":"' + this.description + '",'
       + '"' + Video.CMS_CAST + '":"' + cast + '",'

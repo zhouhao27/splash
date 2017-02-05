@@ -2,6 +2,10 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3. It will convert text from splash-video.com to csv for Yahoo and CMS.
 
+The final result is in [Splash-Video-Spreadsheet-Generation](http://zhouhao.cf/splash/)
+
+## Creation of the project
+
 > ng new splash
 
 ## Dependencies
