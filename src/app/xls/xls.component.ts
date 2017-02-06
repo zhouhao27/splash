@@ -333,6 +333,7 @@ export class XlsComponent implements OnInit {
         console.error('Can not export error type data to excel.');
         return;
     }
+    //alasql('SELECT * INTO XLSX("' + fileName + '.xlsx",{headers:true}) FROM ?', [targetData]);
     alasql('SELECT * INTO XLSX("' + fileName + '.xlsx",{headers:true}) FROM ?', [targetData]);
     // alasql('SELECT * INTO CSV("' + fileName + '.csv",{headers:true}) FROM ?', [targetData]);
   }
