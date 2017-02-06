@@ -79,7 +79,7 @@ export class XlsComponent implements OnInit {
         filter: false
       },
       [Video.CMS_RUN_TIME]: {
-        title: Video.CMS_MOBTITLE,
+        title: Video.CMS_RUN_TIME,
         sort: false,
         filter: false
       },
@@ -237,6 +237,7 @@ export class XlsComponent implements OnInit {
     let video = this.createVideo(value);
     // append video to videos
     let str = video.toYahoo()
+    console.log(str);
     this.yahooData.add(JSON.parse(str));
     this.yahooData.reset();
 

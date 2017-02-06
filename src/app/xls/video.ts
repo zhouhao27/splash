@@ -71,7 +71,7 @@ export class Video {
     var year = d.getFullYear();
 
     return '{'
-      + '"' + Video.FIELD_TITLE + '":"' + this.title + '",'
+      + '"' + Video.FIELD_TITLE + '":"' + "WOWtv - " + this.title + '",'
       + '"' + Video.FIELD_FILENAME + '":"' + this.filename + '",'
       + '"' + Video.FIELD_DESCRIPTION + '":"' + this.description + '",'
       + '"' + Video.FIELD_IMAGE + '":"' + Video.BASE_PATH + year + '/' + Video.MON_NAME[d.getMonth()] + '/' + d.getDate() + '/' + this.filename + '.jpg' + '",'
