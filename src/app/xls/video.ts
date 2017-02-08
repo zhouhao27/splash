@@ -16,7 +16,7 @@ export class Video {
   public static readonly FIELD_RELATEDTAG = "RELATEDTAG";
 
   // base path
-  public static readonly BASE_PATH = "/wowtvvideos/images/";
+  public static readonly BASE_PATH = "/wowtvvideos/";
 
   // cms field definitions
   public static readonly CMS_NAME = "Name";
@@ -74,8 +74,8 @@ export class Video {
       + '"' + Video.FIELD_TITLE + '":"' + "WOWtv - " + this.title + '",'
       + '"' + Video.FIELD_FILENAME + '":"' + this.filename + '",'
       + '"' + Video.FIELD_DESCRIPTION + '":"' + this.description + '",'
-      + '"' + Video.FIELD_IMAGE + '":"' + Video.BASE_PATH + year + '/' + Video.MON_NAME[d.getMonth()] + '/' + d.getDate() + '/' + this.filename + '.jpg' + '",'
-      + '"' + Video.FIELD_STREAM + '":"' + Video.BASE_PATH + year + '/' + Video.MON_NAME[d.getMonth()] + '/' + d.getDate() + '/' + this.filename + '.mov' + '",'
+      + '"' + Video.FIELD_IMAGE + '":"' + Video.BASE_PATH + 'images/' + year + '/' + Video.MON_NAME[d.getMonth()] + '/' + Video.leftPad(d.getDate(),2) + '/' + this.filename + '.jpg' + '",'
+      + '"' + Video.FIELD_STREAM + '":"' + Video.BASE_PATH + 'videos/' + year + '/' + Video.MON_NAME[d.getMonth()] + '/' + Video.leftPad(d.getDate(),2) + '/' + this.filename + '.mov' + '",'
       + '"' + Video.FIELD_TOPCATEGORY + '":"' + 'Entertainment' + '",'
       + '"' + Video.FIELD_SECONDCATEGORY + '":"' + '' + '",'
       + '"' + Video.FIELD_RELATEDTAG + '":"' + '"'
@@ -140,4 +140,13 @@ export class Video {
   private getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+  public static leftPad(number, targetLength) {
+    var output = number + '';
+    while (output.length < targetLength) {
+        output = '0' + output;
+    }
+    return output;
+  }
+
 }

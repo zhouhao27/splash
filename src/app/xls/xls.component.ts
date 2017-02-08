@@ -287,7 +287,7 @@ export class XlsComponent implements OnInit {
         if (m < 0) {
           m = 0;
         }
-        video.duration = '00:' + this.leftPad(m,2) + ':' + this.leftPad(s,2) + ".000";
+        video.duration = '00:' + Video.leftPad(m,2) + ':' + Video.leftPad(s,2) + ".000";
       }
 
       // from keywords to tag
@@ -337,7 +337,7 @@ export class XlsComponent implements OnInit {
     alasql('SELECT * INTO XLSX("' + fileName + '.xlsx",{headers:true}) FROM ?', [targetData]);
     // alasql('SELECT * INTO CSV("' + fileName + '.csv",{headers:true}) FROM ?', [targetData]);
   }
-
+/*
   private convertArrayOfObjectsToCSV(args) : string {
     var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
@@ -389,12 +389,5 @@ export class XlsComponent implements OnInit {
     link.setAttribute('download', filename);
     link.click();
   }
-
-  private leftPad(number, targetLength) {
-    var output = number + '';
-    while (output.length < targetLength) {
-        output = '0' + output;
-    }
-    return output;
-  }
+*/
 }
