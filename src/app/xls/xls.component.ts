@@ -262,7 +262,7 @@ export class XlsComponent implements OnInit {
       // title from headline
       if (key === 'Headline') {
         // remove SNTV -
-        const data = val.split('SNTV - ')
+        const data = val.split('SNTV -')
         video.title = data[1].split('"').join("'");
       }
 
