@@ -85,7 +85,7 @@ export class Video {
   // convert to a json object cms needed
   public toCMS(): string {
     // always only get the first name from tag as a cast
-    let cast = this.tag.split(',')[0];
+    let cast = this.tag ? this.tag.split(',')[0] : "-";
     let rate = this.getRandomInt(5, 8);
 
     return '{'
