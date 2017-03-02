@@ -85,6 +85,7 @@ export class Video {
   // convert to a json object cms needed
   public toCMS(): string {
     // always only get the first name from tag as a cast
+    // in case when keyword is empty, populate the cast to "-"
     let cast = this.tag ? this.tag.split(',')[0] : "-";
     let rate = this.getRandomInt(5, 8);
 
